@@ -8,7 +8,7 @@
 ### Pivoting işlemini uygulayabilmek için 3 ayrı sanal makine kullanmak gerekmektedir. Bu ortamı hazırlarken ben VMware Workstation Pro 17 kullandım ve anlatımlarım VMware üzerinden olacak, ancak tüm işlemler Oracle VirtualBox ve diğer sanal makine ortamları için de geçerlidir. 
 ### **Kurulumlar**
 
-### vmware.com üzerinden kurumları tamamladıktan sonra Help -> Enter a Licence Key adımlarını takip ederek internetten bulduğunuz güncel lisans anahtarını kullanarak kullanıma başlayabilirsiniz. Ardından Kali Linux ve Metasploitable2 sanal makinelerinin kurulumları tamamlanır. Metasploitable makinenin ayarları Ek 1'deki gibi olmalıdır. Kurduğumuz metasploitable makineyi görseldeki gibi klonlayarak ikinci bir metasploitable makine elde ederiz. (Ek 2)
+### [VMware](https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html) üzerinden kurumları tamamladıktan sonra Help -> Enter a Licence Key adımlarını takip ederek internetten bulduğunuz güncel lisans anahtarını kullanarak kullanıma başlayabilirsiniz. Ardından Kali Linux ve Metasploitable2 sanal makinelerinin kurulumları tamamlanır. Metasploitable makinenin ayarları Ek 1'deki gibi olmalıdır. Kurduğumuz metasploitable makineyi görseldeki gibi klonlayarak ikinci bir metasploitable makine elde ederiz. (Ek 2)
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/setup.png "Setup")
 
