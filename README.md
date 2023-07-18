@@ -102,3 +102,53 @@
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/hosts.png "HOSTS")
 
 #### _Ek 18_
+
+### Aynı ağda iletişim halinde oldukları için hosts komutuyla IP'leri görünen makinelere ping_sweep modülünü kullanarak aynı ağda olan cihazlara ping atılır. *search ping_sweep* msfconsole'da çalıştırılır. Ek 19'daki gibi ayarlamalar yapılır. set rhosts ayarlanırken IP aralığı için CIDR adresleme yöntemi kullanılır. Bu işlemlerin ardından 192.168.81.128 ve 192.168.81.129 numaralı IP adresleri bulunduktan sonra ping atılmış olur. 
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/ping.png "PING")
+
+#### _Ek 19_
+
+### Bu adımdan sonra portscan modülü kullanılarak makinelere ait açık port analizi yapılır. Ek 20'de görüldüğü gibi modüle girilerek TCP port analizi seçilir. TCP portunun seçilme sebebi kolay erişebilmesidir. options komutuyla rhosts'u asıl hedef makinenin IP'si olarak girilir (Ek 21). Exploit (Sömürmek) edildikten sonra 192.168.81.129'a ait açık portlar tespit edilir.  
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/port.png "PORT")
+
+#### _Ek 20_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/portexploit.png "PORTEXPLOIT")
+
+#### _Ek 21_
+
+
+
+### Port analizinden sonra *ssh_login* modulüne geri dönerek (Ek 22) 192.168.81.128 IP'li makine için sızma testleri yapılır. Metasploitable makine için ayarlar Ek 23'teki gibi olduğundan emin olduktan sonra exploit komutu ile brute-force saldırısı başlar. Ardından yeni açılan session 3 seçilir ve etkileşime geçilir (Ek 24). 
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/backtossh.png "BACKTOSSH")
+
+#### _Ek 22_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/exploitvm1.png "EXPLOITVM1")
+
+#### _Ek 23_
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/vm1interact.png "VM1INTERACT")
+
+#### _Ek 24_
+
+### Bu adımdan sonra background komutu ile session 3 arka planda çalıştırılır ve asıl hedef makinenin IP'si (192.168.81.129) rhost'a ayarlanarak exploit komutu çalıştırılır.
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/exploitvm2.png "EXPLOITVM2")
+
+#### _Ek 25_
+
+### Ek 26'da gözüktüğü şekilde 4. bir session açılır. Bu oturumun bağlantı yolunu incelediğimiz zaman 192.168.18.130 IP adresli Kali Linux saldırgan makinemizden 192.168.81.129 IP adresli kurban makineye erişebildiğimizi görüyoruz. *sessions -i 4*  (interact) komutuyla hedef makinemize sızma işlemimiz tamamlanmış olur.
+### Test etmek için kurban makinenin içinde *ifconfig* komutu çalıştırdığımızda Ek 27'deki şekilde IP adresi görülmektedir.
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/vm2interact.png "VM2INTERACT")
+
+#### _Ek 26_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/result.png "RESULT")
+
+#### _Ek 27_
+
+## Sonuç
+### 3 ayrı Linux sanal makinesi kullanarak kendi laboratuvar ortamımı oluşturduğum bu projede siber dünyada sıklıkla karşılaşılan pivoting yönteminin uygulanmasını anlatmaya çalıştım. Yapacağınız yöntemlerin yalnızca sanal makineler için kullanılması gerekmektedir. Gerçek kullanıcılar üzerinde bu işlemleri uygulamanız suçtur ve yasalar uyarınca cezası bulunmaktadır. Pivoting ortak bir ağa sahip kullanıcıların başka ağlardaki diğer cihazlar için büyük bir tehdit oluşturmaktadır. Kötü niyetli kişilerin sıklıkla kullandığı bu yöntemin önüne geçmek için ortak ağları kullanmaktan kaçınmak gerekir.  
