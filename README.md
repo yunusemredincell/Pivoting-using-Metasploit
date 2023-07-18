@@ -74,8 +74,31 @@
 
 #### _Ek 12_
 
-### Seçilen oturum *sessions -u 1* komutuyla upgrade edilir. Upgrade sayesinde multi/handler çalıştırılarak ayrı bir meterpreter oturumu açılır (Ek 13). Bu oturumda *sessions -l* ile görüntülenir. 
+### Seçilen oturum *sessions -u 1* komutuyla upgrade edilir. Upgrade sayesinde multi/handler çalıştırılarak ayrı bir meterpreter oturumu açılır (Ek 13). Bu oturumda *sessions -l* ile görüntülenir. *use2* diyerek meterpreter oturumu açılır. *sessions -i 2* ile de etkileşim (interaction) başlatılır (Ek 14). Böylece hedef makineye erişmiş oluruz. *sysinfo* çalıştırarak işletim sistemi ve mimarisi hakkında bilgiler edinebiliriz. 
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/upgrade.png "UPGRADE")
 
 #### _Ek 13_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/interaction.png "INTERACTION")
+
+#### _Ek 14_
+### Bu adımdan sonra *ifconfig* çalıştırarak makinenin ağ bağlantılarıyla alakalı IP bilgilerini görüntülenir (Ek 15). Burada bağlı olunan başka bir ağın olduğu tespit edilir ve bu ağ için saldırılar yapılır. 
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/ipinfo.png "IPINFO")
+
+#### _Ek 15_
+
+### Ek 16'da görüldüğü gibi *background* komutuyla session 2'nin arka planda çalışmaya devam etmesi sağlanmıştır. Bunun ardından msfconcole üzerinden *search autoroute* ile otomatik yönlendirme yapılması amaçlanmıştır. Session bilgisi olarak arka planda çalışan session 2 tanımlandıktan sonra *run* komutuyla modül çalıştırılmıştır. Bunun sonucunda diğer ağ için bir route oluşturulmuştur (Ek 17).
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/autoroute.png "AUTOROUTE")
+
+#### _Ek 16_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/routeadd.png "ROUTEADD")
+
+#### _Ek 17_
+
+### Oluşturulan route'un sonucunu görebilmek için ayrı bir terminalde *msfdb init* komutu çalıştırıldıktan sonra msfconsole üzerinden autoroute modülü içinde Ek 18'te görüldüğü şekliyle *hosts* komutu çalıştırılır. Bu komutun ardından aynı ağda oldukları için pivoting uygulayacağımız Metasploitable Kopya makinesinin IP'si gözükmektedir (192.168.81.129).  
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/hosts.png "HOSTS")
+
+#### _Ek 18_
