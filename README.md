@@ -1,10 +1,10 @@
-# **Sanal Makineler ve Metasploit Framework kullanarak Pivoting**
+# **Sanal Makineler ve Metasploit Framework kullanarak Pivoting Uygulama**
 ### Pivoting, ortak bir ağda olduğumuz makineyi kullanarak, o makinenin bağlı olduğu bir diğer ağ varsa o ağı da ortak kullanan makineyi hackleme işlemidir. Şekil 1'de görüldüğü üzere sol tarafta saldırgan makine, ortada iki ayrı ağa bağlı olan diğer makine, sağda ise hedefteki makine bulunmaktadır.
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/genelgorunum.png "Genel Gorunum")
 
 #### _Şekil 1_
 
-## **Kendi Laboratuvar ortamınızı oluşturma**
+## **Kendi Laboratuvar Ortamınızı Oluşturma**
 ### Pivoting işlemini uygulayabilmek için 3 ayrı sanal makine kullanmak gerekmektedir. Bu ortamı hazırlarken ben VMware Workstation Pro 17 kullandım ve anlatımlarım VMware üzerinden olacak, ancak tüm işlemler Oracle VirtualBox ve diğer sanal makine ortamları için de geçerlidir. 
 ### **Kurulumlar**
 
