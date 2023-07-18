@@ -19,7 +19,7 @@
 #### _Ek 2_
 
 ### **Ayarların yapımı** 
-### Kurduğumuz Metasploitable makinenin Ağ ayarlarını pivoting işlemine uygun hale getirmemiz gerekir. Görsellerdeki gibi iki ayrı ağ ayarlanır. (Ek 3 ve Ek 4) Birinci ağ Kali Linux ile aynı ağda olacağı için NAT ağı olarak ayarlanır. İkinci ağ ise kopyalanan metasploitable makineyle aynı ağda olması için Custom olarak vmnet19 şeklinde ayarlanarak spesifik bir ağ ayarlanmış olur. Bu sayede ip statik olarak tanımlanabilir. Kopyaladığımız makinenin de ağ ayarları şekildeki gibi ayarlanarak Pivoting işlemine hazır hale gelir.
+### Kurduğumuz Metasploitable makinenin Ağ ayarlarını pivoting işlemine uygun hale getirmemiz gerekir. Görsellerdeki gibi iki ayrı ağ ayarlanır. (Ek 3 ve Ek 4) Birinci ağ Kali Linux ile aynı ağda olacağı için NAT ağı olarak ayarlanır. İkinci ağ ise kopyalanan metasploitable makineyle aynı ağda olması için Custom olarak vmnet19 şeklinde ayarlanarak spesifik bir ağ ayarlanmış olur. Bu sayede ip statik olarak tanımlanabilir. Kopyaladığımız makinenin de ağ ayarları yalnızca bir ağdan oluşur ve ağ ayarları Ek 4.1 şekilde gibi ayarlanarak Pivoting işlemine hazır hale gelir.
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/nat.png "NAT Ağı")
 
@@ -28,6 +28,10 @@
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/vmnet19.png "VMnet19")
 
 #### _Ek 4_
+
+![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/kopyasetup.png "COPYSETUP")
+
+#### _Ek 4.1_
 
 ### **Sanal Makineleri Çalıştırma ve Gerekli Konfigürasyonları ayarlama**
 ### Üç sanal makineyi de çalıştırılır. Metasploit makinelerde kullanıcı adı ve şifre *msfadmin* dir.  Metasploitable makinemizde ikinci ağı tamamlamak için "*sudo ip link set dev eth1 down*" ve "*sudo dhclient eth1*" komutlarıyla ikinci ağımız için statik olarak ip oluşturulur. (Ek 5 ve Ek 6). 
