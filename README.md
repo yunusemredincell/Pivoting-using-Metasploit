@@ -1,4 +1,4 @@
-# **Sanal Makineler ve Metasploit Framework kullanarak Pivoting Uygulama**
+# **Sanal Makineler ve Metasploit Framework kullanarak Pivoting Saldırısı**
 ### Pivoting, ortak bir ağda olduğumuz makineyi kullanarak, o makinenin bağlı olduğu bir diğer ağ varsa o ağı da ortak kullanan makineyi hackleme işlemidir. Şekil 1'de görüldüğü üzere sol tarafta saldırgan makine, ortada iki ayrı ağa bağlı olan diğer makine, sağda ise hedefteki makine bulunmaktadır.
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/genelgorunum.png "Genel Gorunum")
 
