@@ -34,7 +34,7 @@
 #### _Ek 4.1_
 
 ### **Sanal Makineleri Çalıştırma ve Gerekli Konfigürasyonları ayarlama**
-### Üç sanal makineyi de çalıştırılır. Metasploit makinelerde kullanıcı adı ve şifre *msfadmin* dir.  Metasploitable makinemizde ikinci ağı tamamlamak için "*sudo ip link set dev eth1 down*" ve "*sudo dhclient eth1*" komutlarıyla ikinci ağımız için statik olarak ip oluşturulur. (Ek 5 ve Ek 6). 
+### Kurduğumuz üç ayrı  sanal makine de VMware üzerinden çalıştırılır. Metasploit makinelerde kullanıcı adı ve şifre *msfadmin* dir.  Metasploitable makinemizde ikinci ağı tamamlamak için "*sudo ip link set dev eth1 down*" ve "*sudo dhclient eth1*" komutlarıyla ikinci ağımız için statik olarak ip oluşturulur. (Ek 5 ve Ek 6). 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/dhclient.png "Dhclient")
 
 #### _Ek 5_
@@ -42,13 +42,13 @@
 
 #### _Ek 6_
 
-### Oluşturlan IP'ler ve Makineler benim Pivoting işlemim için şu şekildedir:
+### Oluşturulan IP'ler ve Makineler benim Pivoting işlemim için şu şekildedir:
 ### Kali Linux eth0: 192.168.18.128
 ### Metasploitable eth0: 192.168.18.130 eth1: 192.168.81.128
 ### Metasploitable Kopya: eth0: 192.168.81.129
 
 ## **Pivoting'e Başlama**
-### İlk olarak aynı ağda olduğumuz 192.168.18.130 IP'li makineye Kali Linux üzerinden nmap sorgulaması yapılır. (Ek 7) nmap taramasının ardından açık portlar bulunur. Bu portlardan herhangi biri üzerinden hedef makineye sızma gerçekleştirilir. Benim yapacağım Pivoting işlemi için 22 port numaralı SSH portu üzerinden hedef makineye sımza testi uygulanır (Ek 8).  
+### İlk olarak aynı ağda olduğumuz 192.168.18.130 IP'li makineye Kali Linux üzerinden *nmap* taraması yapılır. (Ek 7) *nmap* taramasının ardından açık portlar bulunur. Bu portlardan herhangi biri üzerinden hedef makineye sızma gerçekleştirilir. Benim yapacağım Pivoting işlemi için 22 port numaralı SSH portu üzerinden hedef makineye sımza testi uygulanır (Ek 8).  
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/nmap.png "NMAP")
 
@@ -57,7 +57,7 @@
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/ssh.png "SSH")
 
 #### _Ek 8_
-### Kali Linux üzerinden msfconsole çalıştırılır. msfconsole modülü üzerinden *search ssh_login* komutuyla devam edilir (Ek 9). 
+### Kali Linux üzerinden *msfconsole* çalıştırılır. *msfconsole* modülü üzerinden *search ssh_login* komutuyla devam edilir (Ek 9). 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/searchssh.png "SSHSEARCH")
 
 #### _Ek 9_
@@ -72,7 +72,7 @@
 
 #### _Ek 11_
 
-### exploit komutu çalıştırarak hedef makine için bruteforce ataklara başlanır. Ayarlanan şifre ve kullanıcı adı doğruysa oturum açılır. Açılan oturumları listelemek için *sessions -l* komutu çalıştırılarak oturum seçenekleri gözükür (Ek 12).
+### *exploit* komutu çalıştırarak hedef makine için *bruteforce* (kaba kuvvet) saldırılarına başlanır. Ayarlanan şifre ve kullanıcı adı doğruysa oturum açılır. Açılan oturumları listelemek için *sessions -l* komutu çalıştırılarak oturum seçenekleri gözükür (Ek 12).
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/exploitssh.png "EXPLOITSSH")
 
@@ -87,7 +87,7 @@
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/interaction.png "INTERACTION")
 
 #### _Ek 14_
-### Bu adımdan sonra *ifconfig* çalıştırarak makinenin ağ bağlantılarıyla alakalı IP bilgilerini görüntülenir (Ek 15). Burada bağlı olunan başka bir ağın olduğu tespit edilir ve bu ağ için saldırılar yapılır. 
+### Bu adımdan sonra *ifconfig* çalıştırarak makinenin ağ bağlantılarıyla alakalı IP bilgilerini görüntülenir (Ek 15). Burada bağlı olunan başka bir ağın olduğu tespit edilir ve asıl hedefimiz olan bu ağ için saldırılar yapılır. 
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/ipinfo.png "IPINFO")
 
@@ -107,13 +107,13 @@
 
 #### _Ek 18_
 
-### Aynı ağda iletişim halinde oldukları için hosts komutuyla IP'leri görünen makinelere ping_sweep modülünü kullanarak aynı ağda olan cihazlara ping atılır. *search ping_sweep* msfconsole'da çalıştırılır. Ek 19'daki gibi ayarlamalar yapılır. set rhosts ayarlanırken IP aralığı için CIDR adresleme yöntemi kullanılır. Bu işlemlerin ardından 192.168.81.128 ve 192.168.81.129 numaralı IP adresleri bulunduktan sonra ping atılmış olur. 
+### Aynı ağda iletişim halinde oldukları için hosts komutuyla IP'leri görünen makinelere *ping_sweep* modülünü kullanarak aynı ağda olan cihazlara ping atılır. *search ping_sweep* komutu msfconsole'da çalıştırılır. Ek 19'daki gibi ayarlamalar yapılır. *set rhosts* ayarlanırken IP aralığı için CIDR adresleme yöntemi kullanılır. Bu işlemlerin ardından 192.168.81.128 ve 192.168.81.129 numaralı IP adresleri bulunduktan sonra ping atılmış olur. 
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/ping.png "PING")
 
 #### _Ek 19_
 
-### Bu adımdan sonra portscan modülü kullanılarak makinelere ait açık port analizi yapılır. Ek 20'de görüldüğü gibi modüle girilerek TCP port analizi seçilir. TCP portunun seçilme sebebi kolay erişebilmesidir. options komutuyla rhosts'u asıl hedef makinenin IP'si olarak girilir (Ek 21). Exploit (Sömürmek) edildikten sonra 192.168.81.129'a ait açık portlar tespit edilir.  
+### Bu adımdan sonra *portscan* modülü kullanılarak makinelere ait açık port analizi yapılır. Ek 20'de görüldüğü gibi modüle girilerek TCP port analizi seçilir. TCP portunun seçilme sebebi kolay erişebilmesidir. *options* komutuyla rhosts'u asıl hedef makinenin IP'si olarak girilir (Ek 21). Exploit (Sömürmek) edildikten sonra 192.168.81.129'a ait açık portlar tespit edilir.  
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/port.png "PORT")
 
@@ -125,7 +125,7 @@
 
 
 
-### Port analizinden sonra *ssh_login* modulüne geri dönerek (Ek 22) 192.168.81.128 IP'li makine için sızma testleri yapılır. Metasploitable makine için ayarlar Ek 23'teki gibi olduğundan emin olduktan sonra exploit komutu ile brute-force saldırısı başlar. Ardından yeni açılan session 3 seçilir ve etkileşime geçilir (Ek 24). 
+### Port analizinden sonra *ssh_login* modulüne geri dönerek (Ek 22) 192.168.81.128 IP'li makine için sızma testleri yapılır. Metasploitable makine için ayarlar Ek 23'teki gibi olduğundan emin olduktan sonra exploit komutu ile brute-force (kaba kuvvet) saldırısı başlar. Ardından yeni açılan *session 3* seçilir ve etkileşime geçilir (Ek 24). 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/backtossh.png "BACKTOSSH")
 
 #### _Ek 22_
@@ -155,4 +155,4 @@
 #### _Ek 27_
 
 ## Sonuç
-### 3 ayrı Linux sanal makinesi kullanarak kendi laboratuvar ortamımı oluşturduğum bu projede siber dünyada sıklıkla karşılaşılan pivoting yönteminin uygulanmasını anlatmaya çalıştım. Yapacağınız yöntemlerin yalnızca sanal makineler için kullanılması gerekmektedir. Gerçek kullanıcılar üzerinde bu işlemleri uygulamanız suçtur ve yasalar uyarınca cezası bulunmaktadır. Pivoting ortak bir ağa sahip kullanıcıların başka ağlardaki diğer cihazlar için büyük bir tehdit oluşturmaktadır. Kötü niyetli kişilerin sıklıkla kullandığı bu yöntemin önüne geçmek için ortak ağları kullanmaktan kaçınmak gerekir.  
+### 3 ayrı Linux sanal makinesi kullanarak kendi laboratuvar ortamımı oluşturduğum bu projede siber dünyada sıklıkla karşılaşılan pivoting yönteminin uygulanmasını anlatmaya çalıştım. Yapacağınız yöntemlerin yalnızca sanal makineler için kullanılması gerekmektedir. Gerçek kullanıcılar üzerinde bu işlemleri uygulamanız suçtur ve yasalar uyarınca cezası bulunmaktadır. Pivoting ortak bir ağa sahip kullanıcıların başka ağlardaki diğer cihazlar için büyük bir tehdit oluşturmaktadır. Kötü niyetli kişilerin sıklıkla kullandığı bu yöntemin önüne geçmek için farklı cihazlarla aynı ağı kullandığımız zaman ortak ağda bulunduğumuz diğer makinelerin güvenlik açıklarının minimum düzeyde olduğundan emin olmalıyız. Aynı ağda olduğumuz cihazların, başka bir ağda etkileşimde bulunduğu makinelerin de bizim için tehdit oluşturup oluşturmadığı hakkında da bilgi sahibi olmamız gerekmektedir.    
