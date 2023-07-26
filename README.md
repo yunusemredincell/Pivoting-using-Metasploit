@@ -48,7 +48,7 @@
 ### Metasploitable Kopya: eth0: 192.168.81.129
 
 ## **Pivoting'e Başlama**
-### İlk olarak aynı ağda olduğumuz 192.168.18.130 IP'li makineye Kali Linux üzerinden *nmap* taraması yapılır. (Ek 7) *nmap* taramasının ardından açık portlar bulunur. Bu portlardan herhangi biri üzerinden hedef makineye sızma gerçekleştirilir. Benim yapacağım Pivoting işlemi için 22 port numaralı SSH portu üzerinden hedef makineye sımza testi uygulanır (Ek 8).  
+### İlk olarak aynı ağda olduğumuz 192.168.18.130 IP'li makineye Kali Linux üzerinden *nmap* taraması yapılır. (Ek 7) *nmap* taramasının ardından açık portlar bulunur. Bu portlardan herhangi biri üzerinden hedef makineye sızma gerçekleştirilir. Benim yapacağım Pivoting işlemi için 22 port numaralı SSH portu üzerinden hedef makineye sızma testi uygulanır (Ek 8).  
 
 ![This is an alt text.](https://github.com/yunusemredincell/Pivoting-using-Metasploit/blob/main/pivotingimage/nmap.png "NMAP")
 
